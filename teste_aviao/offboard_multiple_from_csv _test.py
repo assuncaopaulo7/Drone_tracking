@@ -118,7 +118,7 @@ async def run_vehicle(drone_id, trajectory_offset, udp_port, time_offset, altitu
 
 async def main():
     udp_ports = [14540, 14541]
-    csv_files = ["shapes/active.csv", "shapes/active_plane.csv"]
+    csv_files = ["shapes/active_test.csv", "shapes/active_plane.csv"]
     mavsdk_servers = []
     for i in range(2):
         mavsdk_servers.append(start_mavsdk_server(50040 + i, udp_ports[i]))

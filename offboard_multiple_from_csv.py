@@ -24,11 +24,13 @@ async def get_global_position_telemetry(drone_id, drone):
         break
     
 
-
+#--------------------------------------------------------------
+# tirar isso depois
 async def get_global_position_telemetry(drone_id, drone):
     async for global_position in drone.telemetry.position():
         global_position_telemetry[drone_id] = global_position
         break
+#--------------------------------------------------------------
 
 async def run_drone(drone_id, trajectory_offset, udp_port, time_offset, altitude_offset):
     grpc_port = 50040 + drone_id
@@ -86,6 +88,49 @@ async def run_drone(drone_id, trajectory_offset, udp_port, time_offset, altitude
         return
 
     waypoints = []
+
+    """
+        Ideia de como fazer dois drones voarem em csvs diferentes
+        Passar o nome do csv como argumento e fazer um if para cada drone
+
+        waypoints = []
+        waypoints2 = []
+
+        with open("shapes/active.csv", newline="") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                t = float(row["t"])
+                px = float(row["px"])
+                py = float(row["py"])
+                pz = float(row["pz"])
+                vx = float(row["vx"])
+                vy = float(row["vy"])
+                vz = float(row["vz"])
+                ax = float(row["ax"])
+                ay = float(row["ay"])
+                az = float(row["az"])
+                yaw = float(row["yaw"])
+                mode_code = int(row["mode"])  # Assuming the mode code is in a column named "mode"
+                waypoints.append((t, px, py, pz, vx, vy, vz, ax, ay, az, mode_code))
+
+        with open("shapes/active2.csv", newline="") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                t = float(row["t"])
+                px = float(row["px"])
+                py = float(row["py"])
+                pz = float(row["pz"])
+                vx = float(row["vx"])
+                vy = float(row["vy"])
+                vz = float(row["vz"])
+                ax = float(row["ax"])
+                ay = float(row["ay"])
+                az = float(row["az"])
+                yaw = float(row["yaw"])
+                mode_code = int(row["mode"])  # Assuming the mode code is in a column named "mode"
+                waypoints2.append((t, px, py, pz, vx, vy, vz, ax, ay, az, mode_code)) 
+
+    """
 
     # Read data from the CSV file
     with open("shapes/active.csv", newline="") as csvfile:

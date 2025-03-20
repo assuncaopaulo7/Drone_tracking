@@ -38,7 +38,7 @@ move_speed = 2.0
 hold_time = 4.0
 step_time = 0.1
 
-output_file_drone = "shapes/active.csv"
+output_file_drone = "shapes/active_test.csv"
 create_active_csv(
     shape_name=shape_name,
     diameter=diameter,
