@@ -31,5 +31,5 @@ gnome-terminal --tab --title="QGroundControl" -- bash -c 'cd ~ && ./QGroundContr
 sleep 10
 
 #rodar script em python
-python3 ~/multivehicle/mavsdk_drone_show-0.2/offboard_multiple_from_csv.py
+python3 ~/multivehicle/mavsdk_drone_show-0.2/offboard_multiple_from_csv_TEST.py
 

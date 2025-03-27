@@ -78,8 +78,8 @@ from functions.trajectories import *
 from functions.create_active_csv import create_active_csv
 
 # Example usage
-shape_name="spiral_square"
-diameter = 30.0
+shape_name="circle"
+diameter = 100.0
 direction = 1
 maneuver_time = 90.0
 start_x = 0
@@ -92,7 +92,7 @@ step_time = 0.1 #s
 output_file = "shapes/active.csv"
 
 shape_name2="square"
-diameter2 = 30.0
+diameter2 = 95.0
 direction2 = 1
 maneuver_time2 = 90.0
 start_x2 = 0
