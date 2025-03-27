@@ -22,7 +22,7 @@ gnome-terminal --tab --title="PX4 Drone 1" -- bash -c 'cd ~/PX4-Autopilot && PX4
 sleep 10
 
 # Iniciar o segundo PX4 (Avião) em outra nova aba
-gnome-terminal --tab --title="PX4 Drone 2" -- bash -c 'cd ~/PX4-Autopilot && PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="0,1" PX4_SIM_MODEL=gz_x500 ./build/px4_sitl_default/bin/px4 -i 2; exec bash'
+gnome-terminal --tab --title="PX4 Drone 2" -- bash -c 'cd ~/PX4-Autopilot && PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="0,2" PX4_SIM_MODEL=gz_x500_mono_cam ./build/px4_sitl_default/bin/px4 -i 2; exec bash'
 
 # Abrir o QGroundControl em uma terceira nova aba
 gnome-terminal --tab --title="QGroundControl" -- bash -c 'cd ~ && ./QGroundControl.AppImage; exec bash'
@@ -32,4 +32,3 @@ sleep 10
 
 #rodar script em python
 python3 ~/multivehicle/mavsdk_drone_show-0.2/offboard_multiple_from_csv_TEST.py
-

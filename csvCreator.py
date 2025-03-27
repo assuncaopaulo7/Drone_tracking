@@ -1,5 +1,68 @@
 
 """
+This script generates CSV files for drone trajectories and visualizes them. It supports creating trajectories in different shapes, such as circles and squares, and exports them in a structured format for offboard control in PX4.
+
+Functions:
+----------
+- `create_active_csv`: Generates a CSV file for a specified trajectory shape.
+- `export_and_plot_shape`: Visualizes the trajectory and saves the plot.
+
+Parameters:
+-----------
+- `shape_name` (str): The name of the trajectory shape (e.g., "circle", "square"). # Nome da forma da trajetória
+- `diameter` (float): The diameter or size of the trajectory shape in meters. # Diâmetro ou tamanho da forma
+- `direction` (int): The direction of the trajectory (1 for clockwise, -1 for counterclockwise). # Direção da trajetória
+- `maneuver_time` (float): Total time in seconds for the maneuver. # Tempo total da manobra
+- `start_x` (float): Starting X-coordinate of the trajectory. # Coordenada X inicial
+- `start_y` (float): Starting Y-coordinate of the trajectory. # Coordenada Y inicial
+- `initial_altitude` (float): Initial altitude of the drone in meters. # Altitude inicial do drone
+- `climb_rate` (float): Rate of climb in meters per second. # Taxa de subida
+- `move_speed` (float): Speed of the drone in meters per second during the trajectory. # Velocidade do drone
+- `hold_time` (float): Time in seconds to hold at specific points in the trajectory. # Tempo de espera em pontos específicos
+- `step_time` (float): Time step in seconds for each trajectory point. # Intervalo de tempo entre pontos
+- `output_file` (str): Path to the output CSV file for the trajectory. # Caminho para o arquivo CSV de saída
+
+1. Generate a circular trajectory:
+    ```python
+         shape_name="circle",
+         diameter=100.0,
+         direction=1,
+         maneuver_time=90.0,
+         start_x=0,
+         start_y=0,
+         initial_altitude=15,
+         climb_rate=1.0,
+         move_speed=2.0,
+         hold_time=4.0,
+         step_time=0.1,
+         output_file="shapes/active.csv",
+    ```
+
+2. Generate a square trajectory:
+    ```python
+         shape_name="square",
+         diameter=95.0,
+         direction=1,
+         maneuver_time=90.0,
+         start_x=0,
+         start_y=0,
+         initial_altitude=15,
+         climb_rate=1.0,
+         move_speed=2.0,
+         hold_time=4.0,
+         step_time=0.1,
+         output_file="shapes/active2.csv",
+    ```
+
+3. Visualize the generated trajectories:
+    ```python
+    export_and_plot_shape("shapes/active.csv")
+    export_and_plot_shape("shapes/active2.csv")
+    ```
+
+Notes:
+- Ensure all dependencies are installed, including `matplotlib`, `numpy`, and `pandas`.
+- The generated CSV files can be used with the `offboard_from_csv.py` script for drone control.
 Example Usage:
 --------------
 To generate a CSV file for a circular trajectory, use the following code snippet:
@@ -79,11 +142,11 @@ from functions.create_active_csv import create_active_csv
 
 # Example usage
 shape_name="circle"
-diameter = 100.0
+diameter = 20.0
 direction = 1
 maneuver_time = 90.0
-start_x = 0
-start_y = 0
+start_x = 10
+start_y = 10
 initial_altitude = 15
 climb_rate = 1.0
 move_speed = 2.0  # m/s
@@ -92,8 +155,8 @@ step_time = 0.1 #s
 output_file = "shapes/active.csv"
 
 shape_name2="square"
-diameter2 = 95.0
-direction2 = 1
+diameter2 = 20.0
+direction2 = -1
 maneuver_time2 = 90.0
 start_x2 = 0
 start_y2 = 0
