@@ -1,0 +1,360 @@
+marcos@socialab-152:~$ sudo apt update
+sudo apt install ros-humble-ros-ign-bridge
+Ign:1 http://dl.google.com/linux/chrome-remote-desktop/deb stable InRelease
+Hit:2 https://packages.microsoft.com/repos/code stable InRelease               
+Hit:3 https://dl.google.com/linux/chrome/deb stable InRelease                  
+Ign:4 https://packages.ros.org/ros2/ubuntu jammy InRelease                     
+Hit:5 http://dl.google.com/linux/chrome-remote-desktop/deb stable Release      
+Hit:6 http://packages.osrfoundation.org/gazebo/ubuntu-stable jammy InRelease   
+Ign:7 https://ppa.launchpadcontent.net/bluetooth/bluez/ubuntu jammy InRelease
+Hit:8 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease
+Err:9 https://ppa.launchpadcontent.net/bluetooth/bluez/ubuntu jammy Release
+  404  Not Found [IP: 185.125.190.80 443]
+Hit:10 http://apt.pop-os.org/proprietary jammy InRelease
+Hit:12 http://apt.pop-os.org/release jammy InRelease
+Hit:13 http://apt.pop-os.org/ubuntu jammy InRelease
+Hit:14 http://apt.pop-os.org/ubuntu jammy-security InRelease
+Hit:15 http://apt.pop-os.org/ubuntu jammy-updates InRelease            
+Ign:4 https://packages.ros.org/ros2/ubuntu jammy InRelease             
+Hit:16 http://apt.pop-os.org/ubuntu jammy-backports InRelease          
+Ign:4 https://packages.ros.org/ros2/ubuntu jammy InRelease
+Err:4 https://packages.ros.org/ros2/ubuntu jammy InRelease
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.236.52 443]
+Reading package lists... Done
+E: The repository 'https://ppa.launchpadcontent.net/bluetooth/bluez/ubuntu jammy Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Translations (main/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11 (main/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11 (main/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-small (main/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons (main/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-hidpi (main/dep11/icons-64x64@2.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-large (main/dep11/icons-128x128.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  fonts-lyx freeglut3 graphviz gz-launch6-cli gz-launch7-cli gz-launch8-cli
+  gz-msgs11-cli gz-plugin2-cli gz-plugin3-cli gz-sim7-cli gz-sim8-cli
+  gz-sim9-cli gz-tools2 gz-transport12-cli gz-transport13-cli
+  gz-transport14-cli libann0 libaom-dev libarmadillo-dev libarpack2-dev
+  libasound2-dev libassimp-dev libassimp5 libavdevice-dev libavfilter-dev
+  libblas-dev libblosc-dev libboost-all-dev libboost-atomic-dev
+  libboost-atomic1.74-dev libboost-atomic1.74.0 libboost-chrono-dev
+  libboost-chrono1.74-dev libboost-chrono1.74.0 libboost-container-dev
+  libboost-container1.74-dev libboost-container1.74.0 libboost-context-dev
+  libboost-context1.74-dev libboost-context1.74.0 libboost-coroutine-dev
+  libboost-coroutine1.74-dev libboost-coroutine1.74.0 libboost-date-time-dev
+  libboost-date-time1.74-dev libboost-date-time1.74.0 libboost-dev
+  libboost-exception-dev libboost-exception1.74-dev libboost-fiber-dev
+  libboost-fiber1.74-dev libboost-fiber1.74.0 libboost-filesystem-dev
+  libboost-filesystem1.74-dev libboost-graph-dev libboost-graph-parallel-dev
+  libboost-graph-parallel1.74-dev libboost-graph-parallel1.74.0
+  libboost-graph1.74-dev libboost-graph1.74.0 libboost-iostreams-dev
+  libboost-iostreams1.74-dev libboost-locale-dev libboost-locale1.74-dev
+  libboost-log-dev libboost-log1.74-dev libboost-log1.74.0 libboost-math-dev
+  libboost-math1.74-dev libboost-math1.74.0 libboost-mpi-dev
+  libboost-mpi-python-dev libboost-mpi-python1.74-dev
+  libboost-mpi-python1.74.0 libboost-mpi1.74-dev libboost-mpi1.74.0
+  libboost-nowide-dev libboost-nowide1.74-dev libboost-nowide1.74.0
+  libboost-numpy-dev libboost-numpy1.74-dev libboost-numpy1.74.0
+  libboost-program-options-dev libboost-program-options1.74-dev
+  libboost-program-options1.74.0 libboost-python-dev libboost-python1.74-dev
+  libboost-random-dev libboost-random1.74-dev libboost-random1.74.0
+  libboost-regex-dev libboost-regex1.74-dev libboost-serialization-dev
+  libboost-serialization1.74-dev libboost-serialization1.74.0
+  libboost-stacktrace-dev libboost-stacktrace1.74-dev
+  libboost-stacktrace1.74.0 libboost-system-dev libboost-system1.74-dev
+  libboost-system1.74.0 libboost-test-dev libboost-test1.74-dev
+  libboost-test1.74.0 libboost-thread-dev libboost-thread1.74-dev
+  libboost-timer-dev libboost-timer1.74-dev libboost-timer1.74.0
+  libboost-tools-dev libboost-type-erasure-dev libboost-type-erasure1.74-dev
+  libboost-type-erasure1.74.0 libboost-wave-dev libboost-wave1.74-dev
+  libboost-wave1.74.0 libboost1.74-dev libboost1.74-tools-dev libbullet-dev
+  libbullet3.06 libcaf-openmpi-3 libcap-dev libccd-dev libccd2 libcdt5
+  libcfitsio-dev libcfitsio-doc libcgraph6 libcharls-dev
+  libcoarrays-openmpi-dev libdart-collision-bullet-dev
+  libdart-collision-bullet6.12 libdart-collision-ode-dev
+  libdart-collision-ode6.12 libdart-core+collisions+odelcpsolver6.13
+  libdart-dev libdart-external-convhull-3d-dev libdart-external-ikfast-dev
+  libdart-external-odelcpsolver-dev libdart-external-odelcpsolver6.12
+  libdart-utils-dev libdart-utils-urdf-dev libdart-utils-urdf6.12
+  libdart-utils6.12 libdart6.12 libdav1d-dev libde265-dev libdecor-0-dev
+  libdouble-conversion-dev libdraco-dev libdraco4 libev-dev libevent-2.1-7
+  libevent-dev libevent-extra-2.1-7 libevent-openssl-2.1-7 libfcl-dev
+  libfcl0.7 libflann-dev libflann1.9 libfreeimage-dev libfreeimage3
+  libfreexl-dev libfyba-dev libgdal-dev libgeos-dev libgeotiff-dev libgif-dev
+  libgl1-mesa-dev libgl2ps-dev libglew-dev libgts-0.7-5 libgts-dev libgvc6
+  libgvpr2 libgz-cmake3-dev libgz-cmake4-dev libgz-common5 libgz-common5-av
+  libgz-common5-av-dev libgz-common5-core-dev libgz-common5-dev
+  libgz-common5-events libgz-common5-events-dev libgz-common5-geospatial
+  libgz-common5-geospatial-dev libgz-common5-graphics
+  libgz-common5-graphics-dev libgz-common5-io libgz-common5-io-dev
+  libgz-common5-profiler libgz-common5-profiler-dev libgz-common5-testing
+  libgz-common5-testing-dev libgz-common6 libgz-common6-av
+  libgz-common6-av-dev libgz-common6-core-dev libgz-common6-dev
+  libgz-common6-events libgz-common6-events-dev libgz-common6-geospatial
+  libgz-common6-geospatial-dev libgz-common6-graphics
+  libgz-common6-graphics-dev libgz-common6-io libgz-common6-io-dev
+  libgz-common6-profiler libgz-common6-profiler-dev libgz-common6-testing
+  libgz-common6-testing-dev libgz-fuel-tools10 libgz-fuel-tools8
+  libgz-fuel-tools9 libgz-gui7 libgz-gui8 libgz-gui9 libgz-launch6
+  libgz-launch7 libgz-launch8 libgz-math7 libgz-math7-dev
+  libgz-math7-eigen3-dev libgz-math8 libgz-math8-dev libgz-math8-eigen3-dev
+  libgz-msgs10 libgz-msgs11 libgz-msgs9 libgz-physics6 libgz-physics6-bullet
+  libgz-physics6-bullet-dev libgz-physics6-core-dev libgz-physics6-dartsim
+  libgz-physics6-dartsim-dev libgz-physics6-dev libgz-physics6-heightmap-dev
+  libgz-physics6-mesh-dev libgz-physics6-sdf-dev libgz-physics6-tpe
+  libgz-physics6-tpe-dev libgz-physics6-tpelib libgz-physics6-tpelib-dev
+  libgz-physics7 libgz-physics7-bullet libgz-physics7-bullet-dev
+  libgz-physics7-core-dev libgz-physics7-dartsim libgz-physics7-dartsim-dev
+  libgz-physics7-dev libgz-physics7-heightmap-dev libgz-physics7-mesh-dev
+  libgz-physics7-sdf-dev libgz-physics7-tpe libgz-physics7-tpe-dev
+  libgz-physics7-tpelib libgz-physics7-tpelib-dev libgz-physics8
+  libgz-physics8-bullet libgz-physics8-bullet-dev libgz-physics8-core-dev
+  libgz-physics8-dartsim libgz-physics8-dartsim-dev libgz-physics8-dev
+  libgz-physics8-heightmap-dev libgz-physics8-mesh-dev libgz-physics8-sdf-dev
+  libgz-physics8-tpe libgz-physics8-tpe-dev libgz-physics8-tpelib
+  libgz-physics8-tpelib-dev libgz-plugin2 libgz-plugin2-dev libgz-plugin3
+  libgz-plugin3-dev libgz-rendering7 libgz-rendering7-core-dev
+  libgz-rendering7-dev libgz-rendering7-ogre1 libgz-rendering7-ogre1-dev
+  libgz-rendering7-ogre2 libgz-rendering7-ogre2-dev libgz-rendering8
+  libgz-rendering8-core-dev libgz-rendering8-dev libgz-rendering8-ogre1
+  libgz-rendering8-ogre1-dev libgz-rendering8-ogre2 libgz-rendering8-ogre2-dev
+  libgz-rendering9 libgz-rendering9-core-dev libgz-rendering9-dev
+  libgz-rendering9-ogre1 libgz-rendering9-ogre1-dev libgz-rendering9-ogre2
+  libgz-rendering9-ogre2-dev libgz-sensors7 libgz-sensors7-air-pressure
+  libgz-sensors7-air-speed libgz-sensors7-altimeter
+  libgz-sensors7-boundingbox-camera libgz-sensors7-camera
+  libgz-sensors7-depth-camera libgz-sensors7-force-torque
+  libgz-sensors7-gpu-lidar libgz-sensors7-imu libgz-sensors7-lidar
+  libgz-sensors7-logical-camera libgz-sensors7-magnetometer
+  libgz-sensors7-navsat libgz-sensors7-rendering libgz-sensors7-rgbd-camera
+  libgz-sensors7-segmentation-camera libgz-sensors7-thermal-camera
+  libgz-sensors7-wide-angle-camera libgz-sensors8 libgz-sensors8-air-pressure
+  libgz-sensors8-air-speed libgz-sensors8-altimeter
+  libgz-sensors8-boundingbox-camera libgz-sensors8-camera
+  libgz-sensors8-depth-camera libgz-sensors8-dvl libgz-sensors8-force-torque
+  libgz-sensors8-gpu-lidar libgz-sensors8-imu libgz-sensors8-lidar
+  libgz-sensors8-logical-camera libgz-sensors8-magnetometer
+  libgz-sensors8-navsat libgz-sensors8-rendering libgz-sensors8-rgbd-camera
+  libgz-sensors8-segmentation-camera libgz-sensors8-thermal-camera
+  libgz-sensors8-wide-angle-camera libgz-sensors9 libgz-sensors9-air-pressure
+  libgz-sensors9-air-speed libgz-sensors9-altimeter
+  libgz-sensors9-boundingbox-camera libgz-sensors9-camera
+  libgz-sensors9-depth-camera libgz-sensors9-dvl libgz-sensors9-force-torque
+  libgz-sensors9-gpu-lidar libgz-sensors9-imu libgz-sensors9-lidar
+  libgz-sensors9-logical-camera libgz-sensors9-magnetometer
+  libgz-sensors9-navsat libgz-sensors9-rendering libgz-sensors9-rgbd-camera
+  libgz-sensors9-segmentation-camera libgz-sensors9-thermal-camera
+  libgz-sensors9-wide-angle-camera libgz-sim7 libgz-sim7-plugins libgz-sim8
+  libgz-sim8-plugins libgz-sim9 libgz-sim9-plugins libgz-tools2-dev
+  libgz-transport12 libgz-transport12-log libgz-transport12-parameters
+  libgz-transport13 libgz-transport13-log libgz-transport13-parameters
+  libgz-transport14 libgz-transport14-log libgz-transport14-parameters
+  libgz-utils2 libgz-utils2-cli-dev libgz-utils2-dev libgz-utils3
+  libgz-utils3-cli-dev libgz-utils3-dev libgz-utils3-log libgz-utils3-log-dev
+  libhdf5-mpi-dev libhdf5-openmpi-103-1 libhdf5-openmpi-cpp-103-1
+  libhdf5-openmpi-dev libhdf5-openmpi-fortran-102 libhdf5-openmpi-hl-100
+  libhdf5-openmpi-hl-cpp-100 libhdf5-openmpi-hl-fortran-100 libheif-dev
+  libhwloc-dev libibus-1.0-dev libibverbs-dev libjs-jquery-ui libjson-c-dev
+  libjsoncpp-dev libjxr0 libkml-dev libkmlconvenience1 libkmlregionator1
+  libkmlxsd1 liblab-gamut1 liblapack-dev liblbfgsb0 liblz4-dev libminizip-dev
+  libnetcdf-c++4 libnetcdf-cxx-legacy-dev libnl-3-dev libnl-route-3-dev
+  libnuma-dev liboctomap-dev liboctomap1.9 libode-dev libode8 libogdi-dev
+  libogg-dev libogre-1.9-dev libogre-1.9.0v5 libogre-next-2.3-dev
+  libogre-next-2.3.0 libopenjp2-7-dev libopenmpi-dev libopenni-dev
+  libopenni-sensor-pointclouds0 libopenni0 libopenni2-dev liborocos-kdl-dev
+  liborocos-kdl1.5 libpathplan4 libpcl-apps1.12 libpcl-common1.12 libpcl-dev
+  libpcl-features1.12 libpcl-filters1.12 libpcl-io1.12 libpcl-kdtree1.12
+  libpcl-keypoints1.12 libpcl-ml1.12 libpcl-octree1.12 libpcl-outofcore1.12
+  libpcl-people1.12 libpcl-recognition1.12 libpcl-registration1.12
+  libpcl-sample-consensus1.12 libpcl-search1.12 libpcl-segmentation1.12
+  libpcl-stereo1.12 libpcl-surface1.12 libpcl-tracking1.12
+  libpcl-visualization1.12 libpmix-dev libpoppler-dev libpoppler-private-dev
+  libpostproc-dev libproj-dev libpulse-dev libqhull-dev libqhull8.0
+  libqhullcpp8.0 libqt5charts5 libqt5designercomponents5 libqt5positioning5
+  libqt5qmlworkerscript5 libqt5quickcontrols2-5 libqt5quickparticles5
+  libqt5quickshapes5 libqt5quicktemplates2-5 libqt5quicktest5
+  libqt5quickwidgets5 libqt5sensors5 libqt5webchannel5 libqt5webkit5
+  libqt5webkit5-dev libraw20 librttopo-dev libsdformat13 libsdformat13-dev
+  libsdformat14 libsdformat14-dev libsdformat15 libsdformat15-dev libsdl2-dev
+  libsndio-dev libspatialite-dev libsuperlu-dev libtheora-dev libtinyxml-dev
+  libtinyxml2.6.2v5 liburdfdom-dev liburdfdom-headers-dev
+  liburdfdom-model-state3.0 liburdfdom-model3.0 liburdfdom-sensor3.0
+  liburdfdom-world3.0 liburiparser-dev libusb-1.0-0-dev libusb-1.0-doc
+  libutfcpp-dev libuv1-dev libvtk9-dev libvtk9-java libvtk9-qt-dev
+  libvtk9.1-qt libwebp-dev libwebsockets-dev libwebsockets16 libx265-dev
+  libxaw7-dev libxerces-c-dev libxmu-dev libxmu-headers libxpm-dev
+  libxsimd-dev libxss-dev libxv-dev libxxf86vm-dev libzip-dev libzip4
+  mpi-default-dev openni-utils pybind11-dev pydocstyle pyflakes3
+  python3-appdirs python3-beniget python3-brotli python3-bs4 python3-cycler
+  python3-decorator python3-flake8 python3-fonttools python3-fs python3-gast
+  python3-gz-math7 python3-gz-math8 python3-gz-msgs10 python3-gz-msgs11
+  python3-gz-sim7 python3-gz-sim8 python3-gz-sim9 python3-gz-transport13
+  python3-gz-transport14 python3-html5lib python3-kiwisolver python3-lxml
+  python3-lz4 python3-mccabe python3-mpi4py python3-mpmath python3-ply
+  python3-pybind11 python3-pycodestyle python3-pydocstyle python3-pydot
+  python3-pyflakes python3-pythran python3-scipy python3-sdformat14
+  python3-sdformat15 python3-snowballstemmer python3-soupsieve python3-sympy
+  python3-ufolib2 python3-unicodedata2 python3-vtk9 python3-webencodings
+  qdoc-qt5 qhelpgenerator-qt5 qml-module-qt-labs-folderlistmodel
+  qml-module-qt-labs-platform qml-module-qt-labs-settings qml-module-qtcharts
+  qml-module-qtgraphicaleffects qml-module-qtqml qml-module-qtqml-models2
+  qml-module-qtquick-controls qml-module-qtquick-controls2
+  qml-module-qtquick-dialogs qml-module-qtquick-layouts
+  qml-module-qtquick-privatewidgets qml-module-qtquick-templates2
+  qml-module-qtquick-window2 qml-module-qtquick2 qt5-assistant
+  qtattributionsscanner-qt5 qtdeclarative5-dev qtdeclarative5-dev-tools
+  qtquickcontrols2-5-dev qttools5-dev qttools5-dev-tools qttools5-private-dev
+  ros-humble-action-tutorials-cpp ros-humble-action-tutorials-interfaces
+  ros-humble-action-tutorials-py ros-humble-actionlib-msgs
+  ros-humble-ament-cmake-auto ros-humble-ament-cmake-copyright
+  ros-humble-ament-cmake-cppcheck ros-humble-ament-cmake-cpplint
+  ros-humble-ament-cmake-flake8 ros-humble-ament-cmake-lint-cmake
+  ros-humble-ament-cmake-pep257 ros-humble-ament-cmake-uncrustify
+  ros-humble-ament-cmake-xmllint ros-humble-ament-copyright
+  ros-humble-ament-cppcheck ros-humble-ament-cpplint ros-humble-ament-flake8
+  ros-humble-ament-lint ros-humble-ament-lint-auto ros-humble-ament-lint-cmake
+  ros-humble-ament-lint-common ros-humble-ament-pep257
+  ros-humble-ament-uncrustify ros-humble-ament-xmllint ros-humble-angles
+  ros-humble-common-interfaces ros-humble-composition
+  ros-humble-demo-nodes-cpp ros-humble-demo-nodes-cpp-native
+  ros-humble-demo-nodes-py ros-humble-depthimage-to-laserscan
+  ros-humble-diagnostic-msgs ros-humble-dummy-map-server
+  ros-humble-dummy-robot-bringup ros-humble-dummy-sensors
+  ros-humble-eigen3-cmake-module ros-humble-example-interfaces
+  ros-humble-examples-rclcpp-minimal-action-client
+  ros-humble-examples-rclcpp-minimal-action-server
+  ros-humble-examples-rclcpp-minimal-client
+  ros-humble-examples-rclcpp-minimal-composition
+  ros-humble-examples-rclcpp-minimal-publisher
+  ros-humble-examples-rclcpp-minimal-service
+  ros-humble-examples-rclcpp-minimal-subscriber
+  ros-humble-examples-rclcpp-minimal-timer
+  ros-humble-examples-rclcpp-multithreaded-executor
+  ros-humble-examples-rclpy-executors
+  ros-humble-examples-rclpy-minimal-action-client
+  ros-humble-examples-rclpy-minimal-action-server
+  ros-humble-examples-rclpy-minimal-client
+  ros-humble-examples-rclpy-minimal-publisher
+  ros-humble-examples-rclpy-minimal-service
+  ros-humble-examples-rclpy-minimal-subscriber ros-humble-geometry2
+  ros-humble-ignition-cmake2-vendor ros-humble-ignition-math6-vendor
+  ros-humble-image-geometry ros-humble-image-tools
+  ros-humble-interactive-markers ros-humble-intra-process-demo ros-humble-joy
+  ros-humble-kdl-parser ros-humble-keyboard-handler ros-humble-laser-geometry
+  ros-humble-launch ros-humble-launch-ros ros-humble-launch-testing
+  ros-humble-launch-testing-ament-cmake ros-humble-launch-testing-ros
+  ros-humble-launch-xml ros-humble-launch-yaml ros-humble-libcurl-vendor
+  ros-humble-lifecycle ros-humble-logging-demo ros-humble-map-msgs
+  ros-humble-orocos-kdl-vendor ros-humble-osrf-pycommon
+  ros-humble-pcl-conversions ros-humble-pcl-msgs ros-humble-pendulum-control
+  ros-humble-pendulum-msgs ros-humble-pybind11-vendor ros-humble-qt-dotgraph
+  ros-humble-qt-gui-py-common ros-humble-quality-of-service-demo-cpp
+  ros-humble-quality-of-service-demo-py ros-humble-rclcpp-action
+  ros-humble-rclcpp-lifecycle ros-humble-resource-retriever
+  ros-humble-robot-state-publisher ros-humble-ros-base ros-humble-ros-core
+  ros-humble-ros-environment ros-humble-ros2action ros-humble-ros2bag
+  ros-humble-ros2cli ros-humble-ros2cli-common-extensions
+  ros-humble-ros2component ros-humble-ros2doctor ros-humble-ros2interface
+  ros-humble-ros2launch ros-humble-ros2lifecycle ros-humble-ros2multicast
+  ros-humble-ros2node ros-humble-ros2param ros-humble-ros2pkg
+  ros-humble-ros2run ros-humble-ros2service ros-humble-ros2topic
+  ros-humble-rosbag2 ros-humble-rosbag2-compression
+  ros-humble-rosbag2-compression-zstd ros-humble-rosbag2-cpp
+  ros-humble-rosbag2-interfaces ros-humble-rosbag2-py
+  ros-humble-rosbag2-storage ros-humble-rosbag2-storage-default-plugins
+  ros-humble-rosbag2-transport ros-humble-rosidl-default-generators
+  ros-humble-rosidl-runtime-py ros-humble-rqt-action ros-humble-rqt-bag
+  ros-humble-rqt-console ros-humble-rqt-graph ros-humble-rqt-gui-py
+  ros-humble-rqt-msg ros-humble-rqt-publisher ros-humble-rqt-py-common
+  ros-humble-rqt-py-console ros-humble-rqt-reconfigure
+  ros-humble-rqt-service-caller ros-humble-rqt-shell ros-humble-rqt-srv
+  ros-humble-rqt-topic ros-humble-rttest ros-humble-rviz-assimp-vendor
+  ros-humble-rviz-common ros-humble-rviz-default-plugins
+  ros-humble-rviz-ogre-vendor ros-humble-rviz-rendering ros-humble-rviz2
+  ros-humble-sdl2-vendor ros-humble-sensor-msgs-py ros-humble-shape-msgs
+  ros-humble-shared-queues-vendor ros-humble-sqlite3-vendor ros-humble-sros2
+  ros-humble-sros2-cmake ros-humble-std-srvs ros-humble-stereo-msgs
+  ros-humble-teleop-twist-joy ros-humble-teleop-twist-keyboard ros-humble-tf2
+  ros-humble-tf2-bullet ros-humble-tf2-eigen ros-humble-tf2-eigen-kdl
+  ros-humble-tf2-geometry-msgs ros-humble-tf2-kdl ros-humble-tf2-py
+  ros-humble-tf2-ros ros-humble-tf2-ros-py ros-humble-tf2-sensor-msgs
+  ros-humble-tf2-tools ros-humble-tinyxml-vendor ros-humble-tlsf
+  ros-humble-tlsf-cpp ros-humble-topic-monitor ros-humble-turtlesim
+  ros-humble-uncrustify-vendor ros-humble-urdf ros-humble-urdf-parser-plugin
+  ros-humble-urdfdom ros-humble-urdfdom-headers ros-humble-visualization-msgs
+  ros-humble-zstd-vendor sdformat13-sdf sdformat14-sdf sdformat15-sdf tcl-dev
+  tcl8.6-dev tk-dev tk8.6-dev uncrustify unicode-data vtk9
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  ignition-tools ignition-transport11-cli libignition-msgs8
+  libignition-msgs8-dev libignition-tools-dev libignition-transport11
+  libignition-transport11-core-dev libignition-transport11-dev
+  libignition-transport11-log libignition-transport11-log-dev
+  libignition-transport11-parameters libignition-transport11-parameters-dev
+  libignition-utils1 libignition-utils1-cli-dev libignition-utils1-dev
+  protobuf-compiler ros-humble-actuator-msgs ros-humble-gps-msgs
+  ros-humble-ros-gz-bridge ros-humble-ros-gz-interfaces ros-humble-vision-msgs
+Suggested packages:
+  protobuf-mode-el
+The following NEW packages will be installed:
+  ignition-tools ignition-transport11-cli libignition-msgs8
+  libignition-msgs8-dev libignition-tools-dev libignition-transport11
+  libignition-transport11-core-dev libignition-transport11-dev
+  libignition-transport11-log libignition-transport11-log-dev
+  libignition-transport11-parameters libignition-transport11-parameters-dev
+  libignition-utils1 libignition-utils1-cli-dev libignition-utils1-dev
+  protobuf-compiler ros-humble-actuator-msgs ros-humble-gps-msgs
+  ros-humble-ros-gz-bridge ros-humble-ros-gz-interfaces
+  ros-humble-ros-ign-bridge ros-humble-vision-msgs
+0 upgraded, 22 newly installed, 0 to remove and 82 not upgraded.
+Need to get 3,880 kB/6,049 kB of archives.
+After this operation, 56.3 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Ign:1 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-actuator-msgs amd64 0.0.1-1jammy.20240728.214936
+Ign:2 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-gps-msgs amd64 2.0.4-1jammy.20240728.215531
+Ign:3 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-interfaces amd64 0.244.15-1jammy.20240728.220333
+Ign:4 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-vision-msgs amd64 4.1.1-1jammy.20240728.220906
+Ign:5 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-bridge amd64 0.244.15-1jammy.20240901.074810
+Ign:6 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-ign-bridge amd64 0.244.15-1jammy.20240901.083856
+Ign:1 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-actuator-msgs amd64 0.0.1-1jammy.20240728.214936
+Ign:2 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-gps-msgs amd64 2.0.4-1jammy.20240728.215531
+Ign:3 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-interfaces amd64 0.244.15-1jammy.20240728.220333
+Ign:4 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-vision-msgs amd64 4.1.1-1jammy.20240728.220906
+Ign:5 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-bridge amd64 0.244.15-1jammy.20240901.074810
+Ign:6 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-ign-bridge amd64 0.244.15-1jammy.20240901.083856
+Ign:1 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-actuator-msgs amd64 0.0.1-1jammy.20240728.214936
+Ign:2 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-gps-msgs amd64 2.0.4-1jammy.20240728.215531
+Ign:3 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-interfaces amd64 0.244.15-1jammy.20240728.220333
+Ign:4 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-vision-msgs amd64 4.1.1-1jammy.20240728.220906
+Ign:5 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-bridge amd64 0.244.15-1jammy.20240901.074810
+Ign:6 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-ign-bridge amd64 0.244.15-1jammy.20240901.083856
+Err:1 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-actuator-msgs amd64 0.0.1-1jammy.20240728.214936
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+Err:2 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-gps-msgs amd64 2.0.4-1jammy.20240728.215531
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+Err:3 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-interfaces amd64 0.244.15-1jammy.20240728.220333
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+Err:4 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-vision-msgs amd64 4.1.1-1jammy.20240728.220906
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+Err:5 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-gz-bridge amd64 0.244.15-1jammy.20240901.074810
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+Err:6 https://packages.ros.org/ros2/ubuntu jammy/main amd64 ros-humble-ros-ign-bridge amd64 0.244.15-1jammy.20240901.083856
+  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Failed to fetch https://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-actuator-msgs/ros-humble-actuator-msgs_0.0.1-1jammy.20240728.214936_amd64.deb  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Failed to fetch https://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-gps-msgs/ros-humble-gps-msgs_2.0.4-1jammy.20240728.215531_amd64.deb  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Failed to fetch https://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-ros-gz-interfaces/ros-humble-ros-gz-interfaces_0.244.15-1jammy.20240728.220333_amd64.deb  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Failed to fetch https://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-vision-msgs/ros-humble-vision-msgs_4.1.1-1jammy.20240728.220906_amd64.deb  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Failed to fetch https://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-ros-gz-bridge/ros-humble-ros-gz-bridge_0.244.15-1jammy.20240901.074810_amd64.deb  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Failed to fetch https://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-ros-ign-bridge/ros-humble-ros-ign-bridge_0.244.15-1jammy.20240901.083856_amd64.deb  Certificate verification failed: The certificate is NOT trusted. The name in the certificate does not match the expected.  Could not handshake: Error in the certificate verification. [IP: 64.50.233.100 443]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+marcos@socialab-152:~$ 
+

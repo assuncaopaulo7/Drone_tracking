@@ -131,6 +131,11 @@ class Video():
     def callback(self, sink):
         sample = sink.emit('pull-sample')
         new_frame = self.gst_to_opencv(sample)
+
+         # Reduzir o tamanho do frame pela metade
+        height, width, _ = new_frame.shape
+        new_frame = cv2.resize(new_frame, (width // 2, height // 2))
+        
         self._frame = new_frame
 
         return Gst.FlowReturn.OK
