@@ -37,6 +37,8 @@ sleep 10
 echo "Executando scripts Python..."
 gnome-terminal --tab --title="Offboard Script" -- bash -c 'python3 ~/multivehicle/mavsdk_drone_show-0.2/offboard_multiple_from_csv_TEST.py; exec bash'
 gnome-terminal --tab --title="OpenCV Script" -- bash -c 'python3 ~/multivehicle/mavsdk_drone_show-0.2/opencv-gazebo.py; exec bash'
+gnome-terminal --tab --title="Interactive Tracker" -- bash -c 'python3 ~/multivehicle/mavsdk_drone_show-0.2/YOLO/interactive_tracker.py; exec bash'
+
 
 # Mostrar uso da GPU em tempo real
 gnome-terminal --tab --title="GPU Monitor" -- bash -c 'watch -n 1 nvidia-smi; exec bash'
