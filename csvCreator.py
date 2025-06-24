@@ -202,4 +202,3 @@ export_and_plot_shape(output_file)
 
 output_file2 = "shapes/active2.csv"
 export_and_plot_shape(output_file2)
-
