@@ -5,10 +5,8 @@ echo "Matando instâncias anteriores do Gazebo e PX4..."
 pkill -9 gzserver || true
 pkill -9 gzclient || true
 pkill -9 px4 || true
-sleep 1
-pkill -x px4 || true
-pkill -x gzserver || true
-pkill -x gzclient || true
+#pkill -9 -f "gz"
+
 
 # Obter resolução da tela
 SCREEN_WIDTH=$(xdpyinfo | awk '/dimensions:/ {print $2}' | cut -d 'x' -f1)
@@ -21,7 +19,7 @@ gnome-terminal --tab --title="PX4 Drone 1" -- bash -c 'cd ~/PX4-Autopilot && PX4
 sleep 10
 
 echo "Iniciando PX4 Drone 2..."
-gnome-terminal --tab --title="PX4 Drone 2" -- bash -c 'cd ~/PX4-Autopilot && PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="0,2" PX4_SIM_MODEL=gz_x500_mono_cam ./build/px4_sitl_default/bin/px4 -i 2; exec bash'
+gnome-terminal --tab --title="PX4 Drone 2" -- bash -c 'cd ~/PX4-Autopilot && PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL_POSE="-1,-3" PX4_SIM_MODEL=gz_x500_mono_cam ./build/px4_sitl_default/bin/px4 -i 2; exec bash'
 
 # Aguarda o Gazebo carregar e aparecer na tela
 echo "Aguardando janela do Gazebo aparecer..."

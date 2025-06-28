@@ -8,6 +8,9 @@ from mavsdk.action import ActionError
 from mavsdk.telemetry import *
 import subprocess
 import signal
+import socket
+import json
+
 
 global_position_telemetry = {}
 
@@ -16,7 +19,45 @@ async def get_global_position_telemetry(drone_id, drone):
         global_position_telemetry[drone_id] = global_position
         break
 
+async def listen_udp_for_detection(udp_listen_port, detection_callback):
+    """
+    Função que escuta mensagens UDP no porto indicado e chama a função de callback.
+    Usa recvfrom (que retorna dados + endereço) e lida com exceções silenciosamente.
+    """
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind(("127.0.0.1", udp_listen_port))
+    sock.setblocking(False)
+
+    loop = asyncio.get_event_loop()
+
+    while True:
+        try:
+            # recvfrom retorna (data, addr)
+            data, _ = await loop.run_in_executor(None, sock.recvfrom, 1024)
+            message = json.loads(data.decode("utf-8"))
+            await detection_callback(message)
+        except BlockingIOError:
+            # Nenhum dado disponível no momento
+            await asyncio.sleep(0.05)
+        except json.JSONDecodeError:
+            print("❌ Mensagem recebida não é JSON válido.")
+        except Exception as e:
+            print(f"❌ Erro inesperado ao receber/parsing UDP: {e}")
+        await asyncio.sleep(0.01)
+
+
+
 async def run_drone(drone_id, trajectory_offset, udp_port, time_offset, altitude_offset):
+    camera_drone_id = 2
+    image_width = 640
+    image_height = 480
+    image_center = (image_width // 2, image_height // 2)
+    pixel_to_meter = 0.01  # fator de conversão estimado: 100 pixels ≈ 1 metro
+    image_center = (image_width // 2)
+    horizontal_fov_deg = 87  # ajustar conforme câmara real
+    degrees_per_pixel = horizontal_fov_deg / image_width
+
+
     grpc_port = 50040 + drone_id
     mode_descriptions = {
         0: "On the ground",
@@ -35,6 +76,35 @@ async def run_drone(drone_id, trajectory_offset, udp_port, time_offset, altitude
     drone = System(mavsdk_server_address="127.0.0.1", port=grpc_port)
     await drone.connect(system_address=f"udp://:{udp_port}")
     print(f"Drone connecting with UDP: {udp_port}")
+
+    # Estado para tracking visual
+    detection_buffer = []
+    tracking_active = False
+    udp_listen_port = 9999  # Porta onde o tracker envia
+    object_position_global = None
+
+    async def on_detection_message(message):
+        nonlocal detection_buffer, tracking_active, object_position_global
+        print(f"🛰️ UDP: {message}")
+        detected = message.get("detected", False)
+        pos = message.get("position", None)
+
+        if detected and pos and all(p is not None for p in pos):
+            detection_buffer.append(True)
+            object_position_global = pos
+        else:
+            detection_buffer.append(False)
+
+        detection_buffer = detection_buffer[-5:]
+
+        if detection_buffer.count(True) >= 2:
+            if not tracking_active:
+                print(f"🟢 Drone {drone_id}: MODO TRACKING ATIVADO")
+            tracking_active = True
+
+    if drone_id == camera_drone_id:
+        asyncio.create_task(listen_udp_for_detection(udp_listen_port, on_detection_message))
+
 
     asyncio.ensure_future(get_global_position_telemetry(drone_id, drone))
     
@@ -94,6 +164,8 @@ async def run_drone(drone_id, trajectory_offset, udp_port, time_offset, altitude
     total_duration = waypoints[-1][0]
     t = 0
     last_mode = 0
+    alpha = 0.5  
+
     
     while t <= total_duration:
         current_waypoint = None
@@ -114,11 +186,50 @@ async def run_drone(drone_id, trajectory_offset, udp_port, time_offset, altitude
             print(f"Drone id: {drone_id}: Mode number: {mode_code}, Description: {mode_descriptions[mode_code]}")
             last_mode = mode_code
             
-        await drone.offboard.set_position_velocity_acceleration_ned(
-            PositionNedYaw(*position, yaw),
-            VelocityNedYaw(*velocity, yaw),
-            AccelerationNed(*acceleration)
-        )
+        if drone_id == camera_drone_id and tracking_active and object_position_global:
+            px, _ = object_position_global
+            image_width = 640
+            horizontal_fov = 87
+            center_x = image_width // 2
+            graus_por_pixel = horizontal_fov / image_width
+
+            desvio_px = px - center_x
+            angulo = desvio_px * graus_por_pixel
+
+            if abs(angulo) > 0.5:
+                max_angulo = 45
+                angulo = max(min(angulo, max_angulo), -max_angulo)
+                target_yaw = yaw + angulo
+
+                # Fator de suavização dinâmico com base no desvio (0.05 a 0.5, por exemplo)
+                max_alpha = 0.5
+                min_alpha = 0.05
+                max_desvio_px = center_x  # desvio máximo possível (metade da imagem)
+
+                # Normaliza desvio para [0, 1] e aplica interpolação linear
+                alpha = min_alpha + (max_alpha - min_alpha) * min(abs(desvio_px) / max_desvio_px, 1.0)
+
+                # Suaviza o yaw
+                new_yaw = (1 - alpha) * yaw + alpha * target_yaw
+
+                print(f"🎯 Corrigindo yaw: desvio_px={desvio_px}, angulo={angulo:.2f}°, alpha={alpha:.2f} -> new_yaw={new_yaw:.2f}°")
+            else:
+                new_yaw = yaw
+
+            await drone.offboard.set_position_velocity_acceleration_ned(
+                PositionNedYaw(*position, new_yaw),
+                VelocityNedYaw(*velocity, new_yaw),
+                AccelerationNed(*acceleration)
+            )
+        else:
+            await drone.offboard.set_position_velocity_acceleration_ned(
+                PositionNedYaw(*position, yaw),
+                VelocityNedYaw(*velocity, yaw),
+                AccelerationNed(*acceleration)
+            )
+
+
+
 
         await asyncio.sleep(0.1)
         t += 0.1

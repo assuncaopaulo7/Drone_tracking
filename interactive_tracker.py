@@ -8,6 +8,9 @@ from ultralytics import YOLO
 from ultralytics.utils import LOGGER
 from ultralytics.utils.plotting import Annotator, colors
 from opencv_gazebo import Video
+import socket
+import json
+
 
 
 enable_gpu = True  # Set True if running with CUDA
@@ -50,6 +53,17 @@ vw = None
 selected_object_id = None
 selected_bbox = None
 selected_center = None
+
+# ------------------------------------------------
+
+UDP_IP = "127.0.0.1"  # ou o IP do receptor
+UDP_PORT = 9999       # escolha uma porta livre
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+last_udp_send = time.time()
+
+# -----------------------------------------------
+
 
  
 def get_center(x1, y1, x2, y2): 
@@ -170,13 +184,25 @@ while True:
     detections = results[0].boxes.data if results[0].boxes is not None else []
     detected_objects = []
 
+    # --------------------------------------------------
+    object_detected = False
+    object_position = None
+    # --------------------------------------------------
+
     for track in detections:
         track = track.tolist()
         if len(track) < 6:
             continue
+
         x1, y1, x2, y2 = map(int, track[:4])
         class_id = int(track[6]) if len(track) >= 7 else int(track[5])
         track_id = int(track[4]) if len(track) == 7 else -1
+
+        if not object_detected:  # é mesmo aqui?
+            cx, cy = get_center(x1, y1, x2, y2)
+            object_position = (cx, cy)
+            object_detected = True
+
         color = colors(track_id, True)
         txt_color = annotator.get_txt_color(color)
         label = f"{classes[class_id]} ID {track_id}" + (f" ({float(track[5]):.2f})" if show_conf else "")
@@ -184,8 +210,8 @@ while True:
             draw_tracking_scope(im, (x1, y1, x2, y2), color)
             center = get_center(x1, y1, x2, y2)
             cv2.circle(im, center, 6, color, -1)
-            pulse_radius = 8 + int(4 * abs(time.time() % 1 - 0.5))
-            cv2.circle(im, center, pulse_radius, color, 2)
+            #pulse_radius = 8 + int(4 * abs(time.time() % 1 - 0.5))
+            #cv2.circle(im, center, pulse_radius, color, 2)
             annotator.box_label([x1, y1, x2, y2], label=f"ACTIVE: TRACK {track_id}", color=color)
         else:
             for i in range(x1, x2, 10):
@@ -214,6 +240,29 @@ while True:
 
     # Redimensiona o frame para metade do tamanho antes de exibir
     im_resized = cv2.resize(im, (im.shape[1], im.shape[0]))
+
+    # -----------------------------------------------------------------
+    current_time = time.time()
+    if current_time - last_udp_send >= 0.3:
+        data = {
+            "detected": object_detected,
+            "position": object_position if object_position else [None, None]
+        }
+        message = json.dumps(data).encode('utf-8')
+        try:
+            sock.sendto(message, (UDP_IP, UDP_PORT))
+            print(f"📤 Enviado UDP: {data}")
+        except Exception as e:
+            print(f"Erro ao enviar UDP: {e}")
+        last_udp_send = current_time
+
+    # -----------------------------------------------------------------
+    # ...dentro do loop principal, após receber o frame 'im'...
+
+    h, w = im.shape[:2]
+    center = (w // 2, h // 2)
+    cv2.circle(im, center, 8, (0, 0, 0), -1)  # preto, raio 2, preenchido
+
     cv2.imshow(window_name, im_resized)
     if save_video and vw is not None:
         vw.write(im)
