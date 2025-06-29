@@ -1,54 +1,32 @@
-![MavSDK Drone and Plane Simulation](https://via.placeholder.com/800x400.png?text=Drone+and+Plane+Simulation+in+Gazebo)
+# Drone Tracking in Simulation with YOLO11 and MAVSDK
 
-<!DOCTYPE html>
-<html>
+## 🧠 Introduction
+This project implements a multi-drone tracking system using real-time object detection with YOLOv11 in a Gazebo simulation environment. One drone, equipped with a simulated camera, detects and tracks another moving drone, changing its yaw angle to match the detected drone position. The system integrates computer vision with autonomous flight control using PX4 Autopilot and MAVSDK-Python, and enables coordination via UDP communication.
 
-<body>
-  <h1>Simulação de Drone e Avião no Gazebo com MAVSDK</h1>
-  <p>Este repositório contém um script para lançamento de uma simulação no Gazebo com um drone e um avião, utilizando o MAVSDK para controle. O projeto inclui alterações no código original de drones para suportar a interação entre drone e avião.</p>
+## 🎥 Results
+A demonstration of the drone tracking behavior can be seen in the following GIF:
 
-  <h2>Instruções de Uso:</h2>
-  <p>Para lançar a simulação no Gazebo e executar o código, siga os passos abaixo:</p>
-  <ol>
-    <li>Lançar o Gazebo:</li>
-    <pre><code>cd
-cd multivehicle
-cd MavSDK-Final-Project
-./script.sh</code></pre>
-    <li>Rodar o código:</li>
-    <pre><code>python3 offboard_multiple_from_csv_test.py</code></pre>
-  </ol>
+![Tracking Demo](IMG_0239.gif)
 
-  <h2>O que foi feito:</h2>
-  <ul>
-    <li>Script para lançamento do Gazebo com um drone e um avião.</li>
-    <li>Alterações no código de drones para suportar a simulação de drone e avião.</li>
-  </ul>
+## 🛠 Requirements
+- **Gazebo Sim (Harmonic)**
+- **PX4-Autopilot v1.14**
+- **Python 3.10+**
+- **PyTorch** (with CUDA support recommended)
+- **Ultralytics YOLOv11** (`pip install ultralytics`)
+- **MAVSDK-Python**
+- **OpenCV** (`opencv-python`)
+- **Ubuntu 22.04+** (recommended)
 
-  <h2>O que falta fazer:</h2>
-  <ul>
-    <li>Mudar a trajetória do avião para um padrão mais complexo ou personalizado.</li>
-    <li>Verificar e resolver problemas de conexão entre o MAVSDK e a simulação.</li>
-  </ul>
+## ▶️ How to Run
 
-  <h2>Introdução:</h2>
-  <p>O MAVSDK (MAVLink SDK) é uma ferramenta poderosa para interagir com drones e veículos aéreos usando o protocolo de comunicação MAVLink. Este projeto utiliza o modo "offboard" do PX4 para controlar a posição e a velocidade do drone e do avião em uma simulação no Gazebo.</p>
-  <a href="https://mavsdk.mavlink.io/main/en/">Documentação do MAVSDK</a>
+1. Clone this repository.
 
-  <h2>Pré-requisitos:</h2>
-  <p>Para executar o código e seguir o projeto, certifique-se de ter os seguintes pré-requisitos:</p>
-  <ul>
-    <li>Python: Instale o Python e as dependências necessárias para executar os scripts.</li>
-    <li>Ambiente de Desenvolvimento PX4 para SITL: Configure um ambiente de simulação PX4 Software-in-the-Loop (SITL) no Ubuntu ou WSL-2.</li>
-    <li>MAVSDK: Instale o MAVSDK para comunicação com o drone e o avião.</li>
-  </ul>
+2. Open the `script.sh` file and update all the file paths to match your local environment:
+   - YOLO model path (e.g., `best.pt`)
+   - CSV trajectory files
+   - Any hardcoded absolute paths
 
-  <h2>Próximos passos:</h2>
-  <ul>
-    <li>Implementar uma nova trajetória para o avião.</li>
-    <li>Resolver problemas de conexão e otimizar a comunicação com o MAVSDK.</li>
-  </ul>
-
-
-</body>
-</html>
+3. In the terminal, simply run:
+   ```bash
+   ./script.sh
