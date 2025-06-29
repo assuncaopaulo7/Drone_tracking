@@ -35,7 +35,7 @@ done
 
 # Abrir outros scripts
 echo "Executando scripts Python..."
-gnome-terminal --tab --title="Interactive Tracker" -- bash -c 'python3 ~/multivehicle/mavsdk_drone_show-0.2/interactive_tracker.py; exec bash'
+gnome-terminal --tab --title="Interactive Tracker" -- bash -c 'python3 ~/multivehicle/projeto_final/mavsdk_drone_show-0.2/interactive_tracker.py; exec bash'
 # Esperar a janela do YOLO aparecer e movê-la para a esquerda da tela
 echo "Aguardando janela do YOLO aparecer..."
 for i in {1..10}; do
@@ -48,7 +48,7 @@ for i in {1..10}; do
     sleep 1
 done
 
-gnome-terminal --tab --title="Offboard Script" -- bash -c 'python3 ~/multivehicle/mavsdk_drone_show-0.2/offboard_multiple_from_csv_TEST.py; exec bash'
+gnome-terminal --tab --title="Offboard Script" -- bash -c 'python3 ~/multivehicle/projeto_final/mavsdk_drone_show-0.2/offboard_multiple_from_csv.py; exec bash'
 gnome-terminal --tab --title="GPU Monitor" -- bash -c 'watch -n 1 nvidia-smi; exec bash'
 
 echo "Setup completo!"

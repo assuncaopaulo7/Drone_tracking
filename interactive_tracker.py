@@ -14,7 +14,7 @@ import json
 
 
 enable_gpu = True  # Set True if running with CUDA
-model_file = "/home/marcos/multivehicle/mavsdk_drone_show-0.2/best.pt"  # Path to model file
+model_file = "/home/marcos/multivehicle/projeto_final/mavsdk_drone_show-0.2/best.pt"  # Path to model file
 show_fps = True  # If True, shows current FPS in top-left corner
 show_conf = True  # Display or hide the confidence score
 save_video = True  # Set True to save output video
