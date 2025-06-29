@@ -13,7 +13,7 @@ A demonstration of the drone tracking behavior can be seen in the following GIF:
 - **PX4-Autopilot v1.14**
 - **Python 3.10+**
 - **PyTorch** (with CUDA support recommended)
-- **Ultralytics YOLOv11** (`pip install ultralytics`)
+- **Ultralytics YOLO11** (`pip install ultralytics`)
 - **MAVSDK-Python**
 - **OpenCV** (`opencv-python`)
 - **Ubuntu 22.04+** (recommended)
