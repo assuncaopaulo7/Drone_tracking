@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
         frame = video.frame()
         
-        # Reduzir o tamanho do frame pela metade
+        # Resize the frame
         height, width, _ = frame.shape
         frame = cv2.resize(frame, (width // 2, height // 2))
         cv2.imshow('frame', frame)

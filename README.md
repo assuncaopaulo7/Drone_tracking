@@ -30,3 +30,7 @@ A demonstration of the drone tracking behavior can be seen in the following GIF:
 3. In the terminal, simply run:
    ```bash
    ./script.sh
+
+### ----------------------------------------------------------------------------------------------
+
+Based on https://github.com/alireza787b/mavsdk_drone_show/releases
