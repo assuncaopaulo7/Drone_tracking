@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['drone']
+
+roboflow:
+  workspace: uavs-7l7kv
+  project: uavs-vqpqt
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/uavs-7l7kv/uavs-vqpqt/dataset/2
